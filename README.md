@@ -42,6 +42,12 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
+TakeMeter is a text classifier built for public post-match and daily discussion threads on Reddit's `r/soccer` community. It sorts community comments into three distinct categories—`analysis`, `hot_take`, and `reaction`—so readers can filter out emotional match-thread noise and easily find substantive tactical or statistical discussions. While reading through 35+ real comments in `r/soccer`, I observed four concrete text distinctions that shaped these categories:
+
+1. **Checkable metrics/facts vs. unbacked claims:** Analytical posts cite verifiable match details (such as expected goals `xG`, possession stats, match minutes, or specific tactical setups like "parking the bus"), whereas hot takes state sweeping conclusions without supporting evidence.
+2. **Causal tactical reasoning vs. raw emotional venting:** Substantive comments connect an observation to a cause ("Because the fullbacks pushed too high, they were exposed on the counter-attack"), while match-thread reactions are immediate emotional outbursts ("GET IN!!", "Robbed by VAR again!").
+3. **Evaluative claims about trajectory vs. single-moment gut feelings:** Hot takes make a bold declarative claim about a player's legacy, form, or a manager's future (e.g., debating Lionel Messi's current form), whereas live reactions only express excitement or frustration about an event that happened seconds ago.
+4. **Multi-sentence structured arguments vs. one-line assertions:** Analytical comments typically span multiple clauses contrasting tactics or statistics, while hot takes and reactions are usually short, single-sentence declarations or exclamations.
 
 
 ---
