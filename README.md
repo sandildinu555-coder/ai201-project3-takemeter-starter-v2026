@@ -54,42 +54,42 @@ TakeMeter is a text classifier built for public post-match and daily discussion 
 
 ## Label Taxonomy
 
-<!-- Each label: a one-sentence definition and two real examples from your
-     reading. Then your decision rule for the hardest boundary.
+### `analysis`
 
-     The decision rule is worth a point on its own and it's the thing most
-     people leave out. Every taxonomy has a hardest boundary. Name yours. -->
-
-### `label_one`
-
-**Definition:**
+**Definition:** Makes an argument backed by a specific, checkable fact, stat, or tactical detail.
 
 **Example 1:**
->
+> "Because the fullbacks pushed too high, they were constantly exposed on the counter-attack, leading to that second goal."
 
 **Example 2:**
->
+> "His xG is 0.84 this match, but his finishing has been completely off target every time he gets inside the box."
 
-### `label_two`
+### `hot_take`
 
-**Definition:**
+**Definition:** A confident evaluative claim or conclusion with no support or evidence offered.
 
 **Example 1:**
->
+> "He is completely washed and should never start for this club again."
 
 **Example 2:**
->
+> "Worst manager in the league by a mile, absolutely clueless tactics."
+
+### `reaction`
+
+**Definition:** An immediate, emotional outburst or response to an event that just happened.
+
+**Example 1:**
+> "GET IN!!! WHAT A GOAL!"
+
+**Example 2:**
+> "Absolute robbery, how is that a red card?!"
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `analysis` vs. `hot_take`
 
 **The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
-
-
-
+If the post names at least one specific, checkable match fact (like a stat, player position, or tactical setup) to support its point, it is `analysis`, even if the tone is highly opinionated or heated. If it only contains sweeping conclusions without citing any tangible evidence, it is a `hot_take`.
 ---
 
 ## The Dataset
