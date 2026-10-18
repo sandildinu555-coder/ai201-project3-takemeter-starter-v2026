@@ -94,91 +94,81 @@ If the post names at least one specific, checkable match fact (like a stat, play
 
 ## The Dataset
 
-<!-- Where you collected from, how you labelled, your counts, and three hard
-     cases. -->
-
 **Where the posts came from:**
+I collected all 200 posts from the "Daily Discussion" and "Post-Match" threads in the `r/soccer` subreddit during October 2026.
 
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+**How I labelled them:** 
+I cold-labelled the first 20 examples manually without any AI assistance. For the remaining 180 examples, I used an AI assistant to pre-label batches of comments. I then manually read and verified every single pre-labelled post to ensure it correctly aligned with my written taxonomy before adding it to my `labels.csv` file.
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| `analysis` | 68 | 34.0% |
+| `hot_take` | 68 | 34.0% |
+| `reaction` | 64 | 32.0% |
+| **Total** | 200 | 100% |
 
 **Three hard cases**
 
-<!-- Any post that made you pause: what it was, which two labels it could have
-     been, and what you chose. These are worth more than the easy 190. -->
-
 **1.**
-> *The post:*
+> *The post:* "They only won 40% of their ground duels, getting completely overrun in the center. Absolute joke of a midfield."
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `hot_take`
 >
-> *I chose, because:*
+> *I chose, because:* `analysis`, because it cites a specific checkable statistic (40% ground duels won) to form the basis of its argument. Even though it ends with a highly opinionated hot-take tone, the presence of the checkable fact triggers the rule for analysis.
 
 **2.**
-> *The post:*
+> *The post:* "I cannot believe he missed that! Open goal!"
 >
-> *Could have been:*
+> *Could have been:* `reaction` or `hot_take`
 >
-> *I chose, because:*
+> *I chose, because:* `reaction`, because it is an immediate, highly emotional exclamation reacting to an event (a missed chance) that just happened seconds ago, rather than a broad evaluative claim about the player's overall career or abilities.
 
 **3.**
-> *The post:*
+> *The post:* "Tuchel has no idea how to build an attack, he just relies on individual brilliance."
 >
-> *Could have been:*
+> *Could have been:* `hot_take` or `analysis`
 >
-> *I chose, because:*
+> *I chose, because:* `hot_take`, because even though it discusses "building an attack," it provides no specific tactical details, formations, or stats to back up the sweeping claim. It is entirely an unbacked evaluative conclusion.
 
 ---
 
 ## The Training Run
 
-<!-- Your starting model, your settings, and anything you changed and why. -->
-
 **Base model:**
+`distilbert-base-uncased`
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Settings:** 
+EPOCHS = 3, LEARNING_RATE = 2e-5, BATCH_SIZE = 16, SEED = 42
 
 **Anything I changed from the defaults, and why:**
+I left the hyperparameters at their default values because the dataset is small (200 rows) and the default settings were sufficient to achieve a 1.000 (100%) training accuracy and a 0.900 test accuracy by Epoch 3 without overfitting early. 
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
-
-
+**Split sizes:** 
+Train: 139 / Validation: 31 / Test: 30. 
+In the test split, the labels were perfectly balanced: `analysis` had 10, `hot_take` had 10, and `reaction` had 10. Since no label had fewer than 8 examples in the test split, the metrics shouldn't be overly jumpy in next unit's variance tests.
 
 ---
 
 ## How I Used AI
-
-<!-- Two specific moments — what you asked, what came back, what you changed.
-
-     ⚠️ Plus disclosure of any pre-labelling. If you had a model pre-label a
-     batch and then read and corrected every one, say that. It's an allowed
-     workflow and disclosing it costs you nothing. Not disclosing it is the
-     problem. -->
+## How I Used AI
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* I asked the AI to check my `criteria.md` and `README.md` files for grammar and spelling mistakes.
+- *What came back:* The AI returned my text with a few corrected words and better punctuation.
+- *What I changed:* I accepted the grammar fixes to make my writing clearer, but I kept all my original ideas, numbers, and reasons.
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* I asked the AI to read my label definitions (`analysis`, `hot_take`, `reaction`) and tell me if they are easy to understand.
+- *What came back:* It suggested making a few sentences shorter and more direct.
+- *What I changed:* I used a couple of its wording suggestions, but I made sure my core rules and boundaries stayed exactly the way I wrote them.
 
 **Pre-labelling disclosure:**
+
+Almost all of the work was done by me. I created the taxonomy, set the rules, and manually cold-labelled the first 20 comments. To save time typing and searching, I used an AI tool just to fetch the remaining 180 comments and give them a quick pre-label. However, I personally read and checked every single comment myself to make sure it matched my own rules before adding it to the file.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
