@@ -55,11 +55,11 @@ whether you hit them:
 
 <!-- Your criterion. It must name a number. -->
 
-
+Overall accuracy on the held-out test split is at least **0.62** across all three seeds (`42`, `7`, and `2024`).
 
 **Why this target:**
 
-
+With three labels (`analysis`, `hot_take`, `reaction`), random guessing gets ~0.33 and always guessing my largest `r/soccer` class (`hot_take`, ~40–45% of posts) gets ~0.45, so 0.62 proves the model learned real distinctions beyond the majority class. Because the target must hold across all three seeds in Unit 6 without a single dip on a 30-row test split, 0.62 is strict enough to be useful without failing on a one-post seed fluctuation.
 
 ---
 
@@ -67,11 +67,11 @@ whether you hit them:
 
 <!-- Your criterion. -->
 
-
+The `reaction` label achieves an F1 score of at least **0.65** on the held-out test split across all three seeds.
 
 **Why this target:**
 
-
+Live `r/soccer` match-thread reactions (e.g., `"GET IN!!"`, `"Robbed by VAR!"`) are short, heavily punctuated exclamations that are structurally distinct from multi-clause arguments and well-represented in my dataset (~65–70 examples, ~10 in the test split). Because `reaction` has the cleanest boundary in my taxonomy and more test examples than `analysis`, it should reliably clear a higher 0.65 F1 bar on every seed.
 
 ---
 
@@ -79,11 +79,11 @@ whether you hit them:
 
 <!-- Your criterion. -->
 
-
+The `analysis` label achieves an F1 score of at least **0.55** on the held-out test split across all three seeds.
 
 **Why this target:**
 
-
+Substantive tactical or statistical posts citing checkable facts (`xG`, possession percentages, or setups like `"parking the bus"`) are my smallest class in `r/soccer` (~50–55 examples in `labels.csv`, leaving only ~8 examples in the 15% test split). On 8 test examples, misclassifying a single borderline `analysis` post as `hot_take` moves F1 by ~0.10 between seeds, so a looser 0.55 target accounts for small-sample variance while still ensuring the model surfaces real analysis.
 
 ---
 
@@ -91,11 +91,11 @@ whether you hit them:
 
 <!-- Your criterion. -->
 
-
+No single label makes up more than **45%** of `labels.csv` (and the smallest label has at least **50 examples**).
 
 **Why this target:**
 
-
+Unfiltered `r/soccer` post-match threads are over 70% knee-jerk `hot_take` and `reaction` comments, which is much worse than the project's 70% cap and would leave fewer than 8 `analysis` posts in the test split. Capping my largest class at 45% and collecting at least 50 `analysis` posts prevents the model from lazily guessing `hot_take` and ensures every label has enough test examples to measure in Unit 6.
 
 ---
 
@@ -103,13 +103,11 @@ whether you hit them:
 
 <!-- Your criterion. -->
 
-
+Human annotation agreement on the 30-post calibration set (`agreement.py`) is at least **75%** (at least **23 out of 30** posts).
 
 **Why this target:**
 
-
-
----
+My hardest boundary in `r/soccer` is `analysis` vs. `hot_take`, where heated comments mix a sweeping opinion with a brief match detail, and the 30 calibration posts intentionally include ambiguous borderline cases. Agreeing on at least 75% (23/30) of posts verifies that a human annotator can apply written label definitions consistently before expecting a fine-tuned model to learn the boundaries.
 
 <!-- ─────────────────────────────────────────────────────────────────────────
      UNIT 6 — read this before you change anything above.
