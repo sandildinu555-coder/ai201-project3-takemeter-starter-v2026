@@ -199,63 +199,41 @@ The massive +0.688 jump in `hot_take` F1 proves that fine-tuning was absolutely 
 
 ## Run Log — Before
 
-<!-- Five criteria across three seeds. The notebook's section 6 prints the
-     spread table; the Target and Verdict columns are yours. -->
-
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | ≥ 0.62 | 0.900 | 0.933 | 0.967 | MET |
+| 2. `reaction` F1 score | ≥ 0.65 | 0.824 | 0.947 | 1.000 | MET |
+| 3. `analysis` F1 score | ≥ 0.55 | 1.000 | 0.952 | 0.947 | MET |
+| 4. Max class size & min count | ≤ 45%, ≥ 50 | 34%, 64 | 34%, 64 | 34%, 64 | MET |
+| 5. Agreement rate on calibration | ≥ 75% | N/A | N/A | N/A | TBD |
+
 
 ### Confusion matrix
 
-<!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
-     An image of a matrix earns nothing. -->
-
-| true \ predicted |  |  |  |
+| true \ predicted | analysis | hot_take | reaction |
 |---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| **analysis** | 10 | 0 | 0 |
+| **hot_take** | 0 | 10 | 0 |
+| **reaction** | 0 | 3 | 7 |
 
 **My biggest off-diagonal number, and what it means:**
-<!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
-     direction. "7 real analysis posts were called hot_take and only 3 went the
-     other way" is a direction, not just an error rate. -->
-
-
+The model misclassified 3 true `reaction` posts as `hot_take`, whereas 0 `hot_take` posts went the other way. This shows a lopsided directional confusion where the model defaults to `hot_take` when it struggles to separate an immediate emotional outburst from an unbacked claim.
 
 ---
 
 ## Verdicts and Diagnoses
 
-<!-- MET or MISSED against LAST UNIT's target. The target has to hold across
-     all three seeds, not turn up sometimes. -->
-
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Overall accuracy | ≥ 0.62 | MET | The model achieved 0.900, 0.933, and 0.967 across the three seeds, clearing the 0.62 threshold every time. |
+| 2 | `reaction` F1 score | ≥ 0.65 | MET | The F1 scores were 0.824, 0.947, and 1.000, easily clearing the 0.65 threshold on all three splits. |
+| 3 | `analysis` F1 score | ≥ 0.55 | MET | The F1 scores were 1.000, 0.952, and 0.947, far exceeding the 0.55 threshold despite the small sample size. |
+| 4 | Max class size & min count | ≤ 45%, ≥ 50 | MET | My largest class (`analysis`/`hot_take`) was 34%, and my smallest class (`reaction`) had 64 rows, meeting both constraints. |
+| 5 | Agreement rate on calibration | ≥ 75% | TBD | Will evaluate after running the staff agreement check in Milestone 3. |
 
 **Diagnoses**
 
-<!-- For each miss: the cause, and how you know. The four common causes are:
-     too few examples for a label, a boundary you applied inconsistently, a
-     genuinely hard label pair, and a task the model can't reach from this
-     much data.
-
-     ⚠️ Use your agreement report as evidence. It is the only instrument you
-     have that can tell a LABELLING problem from a MODEL problem, and this
-     section is graded on whether you used it that way. -->
-
-
-
+Since my model passed all four testable criteria across all three seeds, I do not have a missed criterion to diagnose here. However, my confusion matrix reveals a clear, lopsided error pattern: on Seed 42, the model misclassified 3 true `reaction` posts as `hot_take`, while 0 `hot_take` posts went the other way. This indicates the model struggles with the boundary between immediate emotional outbursts and unbacked claims, defaulting to `hot_take` when confused. The upcoming agreement report will verify if this is a model failure or if I applied that boundary inconsistently in my training data.
 ---
 
 ## Agreement Report
