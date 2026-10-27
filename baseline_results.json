@@ -1,0 +1,184 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 30,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 30,
+    "accuracy": 0.6666666666666666,
+    "f1_macro": 0.590491118077325,
+    "per_label": {
+      "analysis": {
+        "precision": 0.5263157894736842,
+        "recall": 1.0,
+        "f1": 0.6896551724137931,
+        "support": 10
+      },
+      "hot_take": {
+        "precision": 1.0,
+        "recall": 0.1,
+        "f1": 0.18181818181818182,
+        "support": 10
+      },
+      "reaction": {
+        "precision": 0.9,
+        "recall": 0.9,
+        "f1": 0.9,
+        "support": 10
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "He won 8 of his 10 ground duels and intercepted 4 passes in the first half alone.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "SCENES IN THE AWAY END!!!",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "OH MY GOD HE ACTUALLY MISSED THE PENALTY",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "They pressed in a 4-4-2 shape, effectively cutting off passing lanes to the defensive midfielder.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Overloading the right side forced the opposition to shift, leaving the left winger completely unmarked.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Mourinho's tactics belong in the museum.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "That is a straight red every day of the week.",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Mount to United is the worst piece of business of the decade.",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Dropping the wingers into a flat midfield five effectively shut down the half-spaces.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "The Premier League is completely rigged for the big 6.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "LIMBS EVERYWHERE!!!",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Playing a high line against a pacey frontline without a sweeper keeper is just tactical suicide.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "I still can't believe Branthwaite was allowed to continue to play tbh",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "WHAT A BANGER!!! STEVIE G REGEN!",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Rio continuing to show his stripes as the cunt we all knew he was",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Ramsdale is barely a Championship level goalkeeper.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "He only looks good because he plays in a system built entirely around him.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Haaland is just a tap-in merchant, doesn't contribute anything to the actual build up.",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Grealish is the most overrated player in English football history.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "The false nine dropped so deep he was essentially playing as a third central midfielder.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Playing out of the back cost them possession 12 times in their own defensive third.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "The Bundesliga is a one-team league and incredibly boring to watch.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Get him off the pitch immediately!",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "They conceded 14 shots inside the box, highlighting massive gaps between the center backs.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Averaging 3.4 key passes per 90 minutes makes him statistically the most creative player in the league.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "He is easily the best midfielder in the world right now, not even close.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "WHAT A CLEARANCE OFF THE LINE!",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Unbelievable save! Keeper kept them in it!",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Bellingham is already better than Zidane ever was.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "The xA (expected assists) for that cross was only 0.05, it was an incredibly difficult finish.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    }
+  ]
+}
