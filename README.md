@@ -236,35 +236,42 @@ The model misclassified 3 true `reaction` posts as `hot_take`, whereas 0 `hot_ta
 Since my model passed all four testable criteria across all three seeds, I do not have a missed criterion to diagnose here. However, my confusion matrix reveals a clear, lopsided error pattern: on Seed 42, the model misclassified 3 true `reaction` posts as `hot_take`, while 0 `hot_take` posts went the other way. This indicates the model struggles with the boundary between immediate emotional outbursts and unbacked claims, defaulting to `hot_take` when confused. The upcoming agreement report will verify if this is a model failure or if I applied that boundary inconsistently in my training data.
 ---
 
+
 ## Agreement Report
 
-<!-- Your rate against the staff set, and every disagreement adjudicated.
-
-     Remember you labelled these 30 under the STAFF taxonomy in
-     data/staff_taxonomy.md, not your own — so every argument below is made
-     from those definitions and those decision rules. -->
-
-**Agreement rate:** ___ / 30 = ___%
-
-<!-- Nobody grades this number. A 60% who argues every disagreement from the
-     stated rules beats a 95% who wrote "staff was right" nine times. Several
-     of the 30 were chosen because they're genuinely ambiguous — you should be
-     winning some of these. -->
+**Agreement rate:** 27 / 30 = 90.0%
 
 **Disagreements**
 
-<!-- Three lines each: the post, both labels, and who you think is right and
-     why — grounded in the staff definitions you were both applying.
+**1.**
+> *The post:* "Times are down about 3% since the shoe rules changed, so obviously the shoes are the whole story and the sport has a problem."
+>
+> *Staff said / I said:* Staff: `hot_take` | Mine: `analysis`
+>
+> *My call, and why:* Staff is right. Rule 1 explicitly states that if a number is just decoration on a sweeping conclusion that the writer already reached, it is a `hot_take`. I saw the "3%" stat and incorrectly assumed it satisfied the rule, without checking if the fact actually carried the massive claim that "the sport has a problem."
+>
+> *Which pile:* (a) the rule covered it and I applied it loosely.
 
-     Then sort each into one of three piles:
-       (a) the rule covered it and I applied it loosely → a consistency problem
-       (b) the rule genuinely doesn't say               → a gap in the definitions
-       (c) the rule is ambiguous here and my reading is defensible → argue it.
-           This is a legitimate win.
+**2.**
+> *The post:* "Nobody actually enjoys the long run. They enjoy having done it, which is a completely different thing, and the sport would be more honest if it said so."
+>
+> *Staff said / I said:* Staff: `hot_take` | Mine: `reaction`
+>
+> *My call, and why:* Staff is right. Rule 2 clearly states that a `reaction` must be about the writer's *own experience* (what just happened to them). "Nobody actually enjoys..." is a sweeping, unbacked generalization about all runners in the world. I was swayed by the emotional tone, but it structurally fits `hot_take`.
+>
+> *Which pile:* (a) the rule covered it and I applied it loosely.
 
-     Pile (a) is the one that matters most for your diagnosis: if you applied a
-     written rule two different ways on 30 posts, that is direct evidence about
-     what you did across your own 200. -->
+**3.**
+> *The post:* "Wind was so bad on the out section I was leaning at about 20 degrees. Coming back felt like cheating."
+>
+> *Staff said / I said:* Staff: `reaction` | Mine: `analysis`
+>
+> *My call, and why:* I am right, and my reading is defensible. Staff labeled this as a `reaction` to a recent run, but Rule 3 states "recency does not outrank evidence." The writer uses a specific numerical observation ("leaning at about 20 degrees") to factually contrast the physical resistance of the out section versus the return leg. The taxonomy is genuinely ambiguous on whether a specific numerical estimate of physical resistance counts as a "checkable fact," so classifying this as `analysis` based on Rule 3 is highly defensible.
+>
+> *Which pile:* (c) the rule is ambiguous here and my reading is defensible.
+
+**What the pattern in my disagreements tells me:**
+The pattern shows that I over-index on surface-level features rather than structural rules. In Disagreements 1 and 3, I saw a number ("3%", "20 degrees") and immediately leaned toward `analysis` without properly evaluating if it was a load-bearing fact. In my own dataset, this means I likely have some disguised `hot_take` and `reaction` posts incorrectly labeled as `analysis` just because they contained a number.
 
 **1.**
 > *The post:*
